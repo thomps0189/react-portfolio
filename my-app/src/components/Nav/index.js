@@ -1,23 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav() {
-  const projects = [
-    {
-      name: "nps-project",
-      description: "nps project descriptions and what it does",
-    },
-    {
-      name: "password-generator",
-      description: "this is a program that will generate your password",
-    },
-  ];
-  function projectSelected() {
-    console.log("hello");
-  }
+function Nav(props) {
+  const { projects = [], setCurrentProject, currentProject } = props;
+
   return (
-    <header>
+    <header className="flex-row px-1">
       <h2>
-        <a href="/"> Angela Thompson, Full-Stack Web Developer</a>
+        <a data-testid="link" href="/">
+          {" "}
+          Angela Thompson
+        </a>
       </h2>
       <nav>
         <ul className="flex-row">
@@ -28,8 +21,16 @@ function Nav() {
             <span>Contact</span>
           </li>
           {projects.map((project) => (
-            <li className="mx-1" key={project.name}>
-              <span onClick={projectSelected}>{project.name}</span>
+            <li
+              className={`mx-1 ${
+                currentProject.name === project.name && "navActive"
+              }`}>
+              <span
+                onClick={() => {
+                  setCurrentProject(project);
+                }}>
+                {capitalizeFirstLetter(project.name)}
+              </span>
             </li>
           ))}
         </ul>
