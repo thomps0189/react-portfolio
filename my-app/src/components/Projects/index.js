@@ -1,20 +1,60 @@
 import React from "react";
-import { capitalizeFirstLetter } from "../../utils/helpers";
-import photo from "../../assets/projects/team-profile-generator.png";
+import { projects } from "../../data";
 
-function Projects() {
-  const currentProject = {
-    name: "nps-project",
-    description: "nps project description",
-  };
+export default function Projects() {
   return (
-    <section>
-      <h1>{capitalizeFirstLetter(currentProject.name)}</h1>
-      <p>{currentProject.description}</p>
-      <div className="flex-row">
-        <img src={photo} alt="project example" className="img-thumbnail mx-1" />
+    <section id="projects" className="text-gray-400 bg-gray-900 body-font">
+      <div className="flex flex-col w-full mb-20">
+        <h1 className="sm:text-4xl text-3xl font-medium title-font mb-4 text-white">
+          Apps I've Built
+        </h1>
+        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          Lorem ipsum as;ldkfj;aleij ;aslkjf
+        </p>
+      </div>
+      <div className="flex flex-wrap -m-4">
+        {projects.map((project) => (
+          <a
+            href={project.link}
+            key={project.image}
+            className="sm:w-1/2 w-100 p-4">
+            <div className="flex relative">
+              <img
+                alt="gallery"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                src={project.image}
+              />
+              <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
+                <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">
+                  {project.subtitle}
+                </h2>
+                <h1 className="title-font text-lg font-medium text-white mb-3">
+                  {project.title}
+                </h1>
+                <p className="leading-relaxed">{project.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
   );
 }
-export default Projects;
+// import React from "react";
+// import { capitalizeFirstLetter } from "../../utils/helpers";
+
+// import ProjectList from "../ProjectList";
+
+// function Projects(props) {
+//   const { currentProject } = props;
+//   return (
+//     <section>
+//       <h1 data-testid="h1tag">{capitalizeFirstLetter(currentProject.name)}</h1>
+//       <p>{currentProject.description}</p>
+//       <div className="flex-row">
+//         <ProjectList name={currentProject.name} />
+//       </div>
+//     </section>
+//   );
+// }
+// export default Projects;

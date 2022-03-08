@@ -1,83 +1,196 @@
-import React, { useState } from "react";
-import { validateEmail } from "../../utils/helpers";
+import React from "react";
 
-function ContactForm() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const { name, email, message } = formState;
-  const handleSubmit = (e) => {
+export default function Contact() {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
-    if (!errorMessage) {
-      console.log("Submit Form", formState);
-    }
-  };
-  const handleChange = (e) => {
-    if (e.target.name === "email") {
-      const isValid = validateEmail(e.target.value);
-      if (!isValid) {
-        setErrorMessage("Your email is invalid.");
-      } else {
-        setErrorMessage("");
-      }
-    } else {
-      if (!e.target.value.length) {
-        setErrorMessage(`${e.target.name} is required.`);
-      } else {
-        setErrorMessage("");
-      }
-    }
-    if (!errorMessage) {
-      setFormState({ ...formState, [e.target.name]: e.target.value });
-      console.log("Handle Form ", formState);
-    }
-  };
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", name, email, message }),
+    })
+      .then(() => alert("Message sent!"))
+      .catch((error) => alert(error));
+  }
 
   return (
-    <section>
-      <h1 data-testid="h1tag">Contact Me</h1>
-      <form id="contact-form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            name="name"
-            defaultValue={name}
-            onBlur={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email address:</label>
-          <input
-            type="email"
-            name="email"
-            defaultValue={email}
-            onBlur={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea
-            name="message"
-            rows="5"
-            defaultValue={message}
-            onBlur={handleChange}
-          />
-        </div>
-        {errorMessage && (
-          <div>
-            <p className="error-text">{errorMessage}</p>
+    <section id="contact" className="relative">
+      <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
+        <div className="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+          <div className="bg-gray-900 relative flex flex-wrap py-6 rounded shadow-md">
+            <div className="lg:w-1/2 px-6">
+              <h2 className="title-font font-semibold text-white tracking-widest text-xs">
+                ADDRESS
+              </h2>
+              <p className="mt-1">Nashville, TN</p>
+            </div>
+            <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
+              <h2 className="title-font font-semibold text-white tracking-widest text-xs">
+                EMAIL
+              </h2>
+              <a
+                className="text-indigo-400 leading-relaxed"
+                href="emailto:amtgo25@gmail.com">
+                amtgo25@gmail.com
+              </a>
+              <h2 className="title-font font-semibold text-white tracking-widest text-xs mt-4">
+                PHONE
+              </h2>
+              <p className="leading-relaxed">615-428-0189</p>
+            </div>
           </div>
-        )}
-        <button data-testid="button" type="submit">
-          Submit
-        </button>
-      </form>
+        </div>
+        <form
+          netlify
+          name="contact"
+          onSubmit={handleSubmit}
+          className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+          <h2 className="text-white sm:text-4xl text-3xl mb-1 font-medium title-font">
+            Contact Me
+          </h2>
+          <p className="leading-relaxed mb-5">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
+            suscipit officia aspernatur veritatis. Asperiores, aliquid?
+          </p>
+          <div className="relative mb-4">
+            <label htmlFor="name" className="leading-7 text-sm text-gray-400">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="relative mb-4">
+            <label htmlFor="email" className="leading-7 text-sm text-gray-400">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="relative mb-4">
+            <label
+              htmlFor="message"
+              className="leading-7 text-sm text-gray-400">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+              onChange={(e) => setMessage(e.target.value)}
+            />
+          </div>
+          <button
+            type="submit"
+            className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+            Submit
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
 
-export default ContactForm;
+// import React, { useState } from "react";
+// import { validateEmail } from "../../utils/helpers";
+
+// function ContactForm() {
+//   const [formState, setFormState] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const { name, email, message } = formState;
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!errorMessage) {
+//       console.log("Submit Form", formState);
+//     }
+//   };
+//   const handleChange = (e) => {
+//     if (e.target.name === "email") {
+//       const isValid = validateEmail(e.target.value);
+//       if (!isValid) {
+//         setErrorMessage("Your email is invalid.");
+//       } else {
+//         setErrorMessage("");
+//       }
+//     } else {
+//       if (!e.target.value.length) {
+//         setErrorMessage(`${e.target.name} is required.`);
+//       } else {
+//         setErrorMessage("");
+//       }
+//     }
+//     if (!errorMessage) {
+//       setFormState({ ...formState, [e.target.name]: e.target.value });
+//       console.log("Handle Form ", formState);
+//     }
+//   };
+
+//   return (
+//     <section>
+//       <h1 data-testid="h1tag">Contact Me</h1>
+//       <form id="contact-form" onSubmit={handleSubmit}>
+//         <div>
+//           <label htmlFor="name">Name:</label>
+//           <input
+//             type="text"
+//             name="name"
+//             defaultValue={name}
+//             onBlur={handleChange}
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="email">Email address:</label>
+//           <input
+//             type="email"
+//             name="email"
+//             defaultValue={email}
+//             onBlur={handleChange}
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="message">Message:</label>
+//           <textarea
+//             name="message"
+//             rows="5"
+//             defaultValue={message}
+//             onBlur={handleChange}
+//           />
+//         </div>
+//         {errorMessage && (
+//           <div>
+//             <p className="error-text">{errorMessage}</p>
+//           </div>
+//         )}
+//         <button data-testid="button" type="submit">
+//           Submit
+//         </button>
+//       </form>
+//     </section>
+//   );
+// }
+
+// export default ContactForm;

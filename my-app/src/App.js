@@ -1,30 +1,20 @@
-import "./App.css";
-import "./index.css";
+import React from "react";
 import About from "./components/About";
 import Nav from "./components/Nav";
 import Projects from "./components/Projects";
-import { useState } from "react";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import "./App.css";
+import "./index.css";
 
-function App() {
-  const [projects] = useState([
-    {
-      name: "nps",
-      description: "nps project description",
-    },
-  ]);
-  const [currentProject, setCurrentProject] = useState(projects[0]);
+export default function App() {
   return (
-    <div>
-      <Nav
-        projects={projects}
-        setCurrentProject={setCurrentProject}
-        currentProject={currentProject}></Nav>
-      <main>
-        <About></About>
-        <Projects></Projects>
-      </main>
-    </div>
+    <main className="text-gray-400 bg-gray-900 body-font">
+      <Nav />
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
+    </main>
   );
 }
-
-export default App;
