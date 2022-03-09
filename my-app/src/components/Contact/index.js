@@ -1,39 +1,52 @@
 import React from "react";
 
 export default function Contact() {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState("");
+  // const [name, setName] = React.useState("");
+  // const [email, setEmail] = React.useState("");
+  // const [message, setMessage] = React.useState("");
 
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
+  // function encode(data) {
+  //   return Object.keys(data)
+  //     .map(
+  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+  //     )
+  //     .join("&");
+  // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", name, email, message }),
-    })
-      .then(() => alert("Message sent!"))
-      .catch((error) => alert(error));
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: encode({ "form-name": "contact", name, email, message }),
+  //   })
+  //     .then(() => alert("Message sent!"))
+  //     .catch((error) => alert(error));
+  // }
 
   return (
-    <section id="contact" className="relative">
-      <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
+    <section id="contact" className="relative text-center">
+      <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap text-center">
+        <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-4 text-center">
+          Contact Me
+        </h1>
         <div className="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <div className="bg-gray-900 relative flex flex-wrap py-6 rounded shadow-md">
             <div className="lg:w-1/2 px-6">
               <h2 className="title-font font-semibold text-white tracking-widest text-xs">
-                ADDRESS
+                LINKS
               </h2>
-              <p className="mt-1">Nashville, TN</p>
+              <a
+                className="text-indigo-400 leading-relaxed"
+                href="https://github.com/thomps0189">
+                GitHub
+              </a>{" "}
+              <br />
+              <a
+                className="text-indigo-400 leading-relaxed"
+                href="https://www.linkedin.com/in/angelathompson201/">
+                LinkedIn
+              </a>
             </div>
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
               <h2 className="title-font font-semibold text-white tracking-widest text-xs">
@@ -51,7 +64,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <form
+        {/* <form
           netlify
           name="contact"
           onSubmit={handleSubmit}
@@ -59,10 +72,7 @@ export default function Contact() {
           <h2 className="text-white sm:text-4xl text-3xl mb-1 font-medium title-font">
             Contact Me
           </h2>
-          <p className="leading-relaxed mb-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-            suscipit officia aspernatur veritatis. Asperiores, aliquid?
-          </p>
+
           <div className="relative mb-4">
             <label htmlFor="name" className="leading-7 text-sm text-gray-400">
               Name
@@ -105,92 +115,8 @@ export default function Contact() {
             className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
             Submit
           </button>
-        </form>
+        </form> */}
       </div>
     </section>
   );
 }
-
-// import React, { useState } from "react";
-// import { validateEmail } from "../../utils/helpers";
-
-// function ContactForm() {
-//   const [formState, setFormState] = useState({
-//     name: "",
-//     email: "",
-//     message: "",
-//   });
-//   const [errorMessage, setErrorMessage] = useState("");
-//   const { name, email, message } = formState;
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (!errorMessage) {
-//       console.log("Submit Form", formState);
-//     }
-//   };
-//   const handleChange = (e) => {
-//     if (e.target.name === "email") {
-//       const isValid = validateEmail(e.target.value);
-//       if (!isValid) {
-//         setErrorMessage("Your email is invalid.");
-//       } else {
-//         setErrorMessage("");
-//       }
-//     } else {
-//       if (!e.target.value.length) {
-//         setErrorMessage(`${e.target.name} is required.`);
-//       } else {
-//         setErrorMessage("");
-//       }
-//     }
-//     if (!errorMessage) {
-//       setFormState({ ...formState, [e.target.name]: e.target.value });
-//       console.log("Handle Form ", formState);
-//     }
-//   };
-
-//   return (
-//     <section>
-//       <h1 data-testid="h1tag">Contact Me</h1>
-//       <form id="contact-form" onSubmit={handleSubmit}>
-//         <div>
-//           <label htmlFor="name">Name:</label>
-//           <input
-//             type="text"
-//             name="name"
-//             defaultValue={name}
-//             onBlur={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="email">Email address:</label>
-//           <input
-//             type="email"
-//             name="email"
-//             defaultValue={email}
-//             onBlur={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="message">Message:</label>
-//           <textarea
-//             name="message"
-//             rows="5"
-//             defaultValue={message}
-//             onBlur={handleChange}
-//           />
-//         </div>
-//         {errorMessage && (
-//           <div>
-//             <p className="error-text">{errorMessage}</p>
-//           </div>
-//         )}
-//         <button data-testid="button" type="submit">
-//           Submit
-//         </button>
-//       </form>
-//     </section>
-//   );
-// }
-
-// export default ContactForm;
