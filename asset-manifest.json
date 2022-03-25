@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/react-portfolio/static/css/main.98d5ea6b.css",
-    "main.js": "/react-portfolio/static/js/main.7949b470.js",
+    "main.js": "/react-portfolio/static/js/main.21298492.js",
     "static/js/787.28cb0dcd.chunk.js": "/react-portfolio/static/js/787.28cb0dcd.chunk.js",
+    "static/media/fitness-app.png": "/react-portfolio/static/media/fitness-app.4dae51a56c1545ef2624.png",
     "static/media/ANGELA-LI-cool-tone-3.jpg": "/react-portfolio/static/media/ANGELA-LI-cool-tone-3.b668112a18526d4172ee.jpg",
     "static/media/bootcamp-real-estate.png": "/react-portfolio/static/media/bootcamp-real-estate.c2c22965a2ab98bd2b04.png",
     "static/media/Full-Stack Web Development Resume.pdf": "/react-portfolio/static/media/Full-Stack Web Development Resume.af5d60ba1381200096ca.pdf",
     "static/media/team-profile-generator.png": "/react-portfolio/static/media/team-profile-generator.f7b7cae6679c0c7c507f.png",
     "index.html": "/react-portfolio/index.html",
     "main.98d5ea6b.css.map": "/react-portfolio/static/css/main.98d5ea6b.css.map",
-    "main.7949b470.js.map": "/react-portfolio/static/js/main.7949b470.js.map",
+    "main.21298492.js.map": "/react-portfolio/static/js/main.21298492.js.map",
     "787.28cb0dcd.chunk.js.map": "/react-portfolio/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.98d5ea6b.css",
-    "static/js/main.7949b470.js"
+    "static/js/main.21298492.js"
   ]
 }
