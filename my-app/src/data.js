@@ -1,6 +1,7 @@
 import bootcampRealEstatePhoto from "./assets/projects/bootcamp-real-estate.png";
 import teamProfileGenPhoto from "./assets/projects/team-profile-generator.png";
 import passwordGeneratorPhoto from "./assets/projects/Password Generator Screenshot.png";
+import fitnessTrackekrAppPhoto from "./assets/projects/fitness-app.png";
 export const projects = [
   {
     title: "Bootcamp Real Estate",
@@ -25,5 +26,13 @@ export const projects = [
       "This is a website where I can generate a custom password. I am prompted by a series of questions regarding the criteria of the password (such as length, special characters, etc.), I am then given a password based off the criteria I entered. ",
     image: passwordGeneratorPhoto,
     link: "https://github.com/thomps0189/password-generator",
+  },
+  {
+    title: "Fitness Tracking App",
+    subtitle: "MERN Stack, GraphQL, Apollo Server, CSS, Bootstrap",
+    description:
+      "This is a website I can signup/login and sign up for classes as well as update personal benchmarks",
+    image: fitnessTrackekrAppPhoto,
+    link: "https://github.com/DuGBB/Lennons-Fitness-Super-App",
   },
 ];
