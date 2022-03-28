@@ -1,5 +1,5 @@
 import React from "react";
-import resume from "../../assets/resume/Full-Stack Web Development Resume.pdf";
+import resume from "../../assets/resume/2022 Front End Resume.pdf";
 
 function Resume() {
   return (
