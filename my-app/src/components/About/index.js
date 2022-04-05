@@ -10,15 +10,15 @@ export default function About() {
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
             Hello, I'm Angela
             <br className="hidden lg:inline-block" />
-            I'm a Full-Stack Web Developer
+            I'm a Front-End Web Developer
           </h1>
           <p className="mb-8 leading-relaxed">
             I was born and raised in Nashville, TN. I graduated from Miami
             University of Ohio in 2015 and entered into the wealth management
             industry. After several years I decided to go back to school and
-            become a Web Developer. I will be a graduate of Vanderbilt
-            University's Full Stack Web Development program in the spring of
-            2022. In my free time I enjoy reading, hiking, and playing piano.
+            become a Web Developer. I am a recent graduate of Vanderbilt
+            University's Full-Stack Web Development Bootcamp. In my free time I
+            enjoy reading, hiking, and playing piano.
           </p>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
             <img

@@ -17,7 +17,7 @@ export default function Projects() {
             className="sm:w-1/2 w-100 p-4"
             target="_blank"
             rel="noopener noreferrer">
-            <div className="flex relative">
+            <div className="flex relative hover:no-underline">
               <img
                 alt="gallery"
                 className="absolute inset-0 w-full h-full object-cover object-center"

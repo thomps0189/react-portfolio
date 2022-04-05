@@ -31,7 +31,7 @@ export const projects = [
     title: "Fitness Tracking App",
     subtitle: "MERN Stack, GraphQL, Apollo Server, CSS, Bootstrap",
     description:
-      "This is a website I can signup/login and sign up for classes as well as update personal benchmarks",
+      "This is a website I can signup/login and sign up for classes as well as update personal benchmarks. This is part of a collaboration with 3 others. I set up the full functionality of the sign up and login pages and linking to backend. ",
     image: fitnessTrackekrAppPhoto,
     link: "https://github.com/DuGBB/Lennons-Fitness-Super-App",
   },
